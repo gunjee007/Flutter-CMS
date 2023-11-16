@@ -1,6 +1,6 @@
-import 'dart:ffi';
+import 'package:equatable/equatable.dart';
 
-class Content {
+final class Content extends Equatable {
   final int id;
   final String title;
   final String description;
@@ -30,12 +30,25 @@ class Content {
       title: json['title'] as String,
       brand: json['brand'] as String,
       description: json['description'] as String,
-      discountPercentage: json['discountPercentage'] as double,
+      discountPercentage: json['discountPercentage'].toDouble() as double,
       images: json['images'] as List<dynamic>,
       price: json['price'] as int,
-      rating: json['rating'] as double,
+      rating: json['rating'].toDouble() as double,
       stock: json['stock'] as int,
       thumbnail: json['thumbnail'] as String,
     );
   }
+  @override
+  List<Object> get props => [
+        id,
+        title,
+        brand,
+        description,
+        discountPercentage,
+        images,
+        price,
+        rating,
+        stock,
+        thumbnail
+      ];
 }
